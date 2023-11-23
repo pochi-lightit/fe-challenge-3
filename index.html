@@ -8,6 +8,55 @@
         <title>Review</title>
       </head>
 <body>
+    <script>
+        selectedRating = null;
+        
+        function selectRating(rating) {
+            selectedRating = rating;
+
+            const buttons = document.querySelectorAll('.rate');
+            buttons.forEach(button => button.classList.remove('selected'));
+
+            const selectedButton = document.querySelector(`.rate:nth-child(${rating})`);
+            selectedButton.classList.add('selected');
+
+        }
+
+        function submitRating() {
+            if (selectRating !== null) {
+                document.getElementById('main').style.display = 'none';
+
+                document.getElementById('response').style.display = 'flex';
+
+                document.getElementById('selectedRating').innerHTML = `&nbsp;${selectedRating}&nbsp;`;
+            }
+        }
+
+    </script>
+    <div class="main-container" id="main">
+        <div class="circle-icon">
+            <img class='icon' src="/fe-challenge-3/Star.svg" alt="orange star icon"/>
+        </div>
+        <h2>How did we do?</h2>
+        <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+        <div class="rating">
+            <button class="rate" onclick="selectRating(1)">1</button>
+            <button class="rate" onclick="selectRating(2)">2</button>
+            <button class="rate" onclick="selectRating(3)">3</button>
+            <button class="rate" onclick="selectRating(4)">4</button>
+            <button class="rate" onclick="selectRating(5)">5</button>
+        </div>
+        <button class="submit" onclick="submitRating()">Submit</button>
+    </div>
+
+    <div class="main-container response" id="response">
+        <img class='check' src="/fe-challenge-3/check-icon.svg" alt="orange check icon"/>
+        <p class="answer">
+            You selected <span id="selectedRating">4</span> out of 5
+            </p>
+        <h2>Thank you!</h2>
+        <p class="message">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
+    </div>
     
 </body>
 </html>
