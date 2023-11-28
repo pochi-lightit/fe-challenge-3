@@ -8,39 +8,7 @@
         <title>Review</title>
       </head>
 <body>
-
-    <script>
-    
-    let selectedRating = null;
-
-    function selectRating(rating) {
-
-        const buttons = document.querySelectorAll('.rate');
-
-        buttons.forEach(button => {
-            const buttonRating = parseInt(button.textContent);
-
-            if (buttonRating === rating && selectedRating !== rating) {
-            button.classList.add('selected');
-            selectedRating = rating;
-            }
-            else {
-            button.classList.remove('selected');
-            }
-        });
-    }
-
-        function submitRating() {
-            if (selectRating !== null) {
-                document.getElementById('main').style.display = 'none';
-
-                document.getElementById('response').style.display = 'flex';
-
-                document.getElementById('selectedRating').innerHTML = `&nbsp;${selectedRating}&nbsp;`;
-            }
-        }
-    </script>
-
+    <script src="script.js"></script>
 
     <div class="main-container" id="main">
         <div class="circle-icon">
@@ -55,7 +23,7 @@
             <button class="rate" onclick="selectRating(4)">4</button>
             <button class="rate" onclick="selectRating(5)">5</button>
         </div>
-        <button class="submit" onclick="submitRating()">Submit</button>
+        <button class="submit" id='submit' onclick="submitRating()" disabled>Submit</button>
     </div>
 
     <div class="main-container response" id="response">
