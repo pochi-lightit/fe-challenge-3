@@ -32,7 +32,7 @@ function selectRating(rating) {
 function submitRating() {
     if (selectRating !== null) {
         document.getElementById('main').style.display = 'none';
-        
+
         document.getElementById('response').style.display = 'flex';
         
 //Si quiero hacer redirect, uso location y agrego el response a otro archivo
@@ -42,6 +42,6 @@ function submitRating() {
 //        innerHTML = `&nbsp;${selectedRating}&nbsp;`;
 //! Otra solución para mejorar el contenido del <p>
         const p = document.getElementById('answer');
-        p.innerText = 'You selected ' + localStorage.getItem("selected_score") + ' out of 5.'
+        p.innerText = 'You selected ' + localStorage.getItem("selected_score") + ' out of 5'
     }
 }
