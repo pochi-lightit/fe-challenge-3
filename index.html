@@ -8,19 +8,27 @@
         <title>Review</title>
       </head>
 <body>
+
     <script>
-        selectedRating = null;
-        
-        function selectRating(rating) {
+    
+    let selectedRating = null;
+
+    function selectRating(rating) {
+
+        const buttons = document.querySelectorAll('.rate');
+
+        buttons.forEach(button => {
+            const buttonRating = parseInt(button.textContent);
+
+            if (buttonRating === rating && selectedRating !== rating) {
+            button.classList.add('selected');
             selectedRating = rating;
-
-            const buttons = document.querySelectorAll('.rate');
-            buttons.forEach(button => button.classList.remove('selected'));
-
-            const selectedButton = document.querySelector(`.rate:nth-child(${rating})`);
-            selectedButton.classList.add('selected');
-
-        }
+            }
+            else {
+            button.classList.remove('selected');
+            }
+        });
+    }
 
         function submitRating() {
             if (selectRating !== null) {
@@ -31,8 +39,9 @@
                 document.getElementById('selectedRating').innerHTML = `&nbsp;${selectedRating}&nbsp;`;
             }
         }
-
     </script>
+
+
     <div class="main-container" id="main">
         <div class="circle-icon">
             <img class='icon' src="/fe-challenge-3/Star.svg" alt="orange star icon"/>
